@@ -23,6 +23,11 @@
         {{-- Navbar Component --}}
         @include('components.navbar')
 
+        <div class="w-full flex justify-center">
+            @include('components.alert')
+        </div>
+
+
         {{-- Register Form --}}
         <div class="flex justify-center">
             <div class="card w-104 bg-base-100 shadow-xl p-10">

@@ -29,76 +29,123 @@
 
                 <p class="text-3xl text-center mb-6 font-semibold">Register your account here!</p>
 
-                <div class="flex flex-col gap-2">
-                    <div class="mb-4">
-                        <label class="text-gray-700 text-sm font-medium mb-2">
-                            Full Name
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Enter your full name" name="fullName">
-                    </div>
+                @include('components.alert')
 
-                    <div class="mb-4">
-                        <label class="text-gray-700 text-sm font-medium mb-2"">
-                            Username
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Enter your username" name="username">
-                    </div>
+                <form action="/register" method="POST">
+                    @csrf
+                    <div class="flex flex-col gap-2">
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-2">
+                                Full Name
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="Enter your full name" name="fullName">
+                            @error('fullName')
+                                <div class="text-xs text-red-500 p-1 font-semibold">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                    <div class="mb-4">
-                        <label class="text-gray-700 text-sm font-medium mb-2">
-                            Email
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="email" placeholder="Enter your email" name="email">
-                    </div>
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-2"">
+                                Username
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="Enter your username" name="username">
+                            @error('username')
+                                <div class="text-xs text-red-500 p-1 font-semibold">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                    <div class="mb-4">
-                        <label class="text-gray-700 text-sm font-medium mb-3">
-                            Phone Number
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Enter your phone number" name="phoneNumber">
-                    </div>
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-2">
+                                Email
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="email" placeholder="Enter your email" name="email">
+                            @error('email')
+                                <div class="text-xs text-red-500 p-1 font-semibold">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                    <div class="mb-4">
-                        <label class="text-gray-700 text-sm font-medium mb-2">
-                            Password
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="password" placeholder="Enter you password" name="password">
-                    </div>
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-3">
+                                Phone Number
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" placeholder="Enter your phone number" name="phoneNumber">
+                            @error('phoneNumber')
+                                <div class="text-xs text-red-500 p-1 font-semibold">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                    <div class="mb-4">
-                        <label class="text-gray-700 text-sm font-medium mb-2">
-                            Confirm Password
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="password" placeholder="Confirm your password" name="confirmPassword">
-                    </div>
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-2">
+                                Password
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="password" placeholder="Enter you password" name="password">
+                            @error('password')
+                                <div class="text-xs text-red-500 p-1 font-semibold">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                    <div class="flex flex-col gap-6">
-                        <button
-                            class="bg-customGreen border rounded h-10 hover:brightness-95 text-white">Register</button>
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-2">
+                                Confirm Password
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="password" placeholder="Confirm your password" name="confirmPassword">
+                            @error('confirmPassword')
+                                <div class="text-xs text-red-500 p-1 font-semibold">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                        <p class="text-xs text-center">Already have an account? Login <a href="/login"
-                                class="hover:underline text-customGreen font-semibold">Here</a></p>
-                    </div>
+                        <div class="flex flex-col gap-6">
+                            <button
+                                class="bg-customGreen border rounded h-10 hover:brightness-95 text-white">Register</button>
+
+                            <p class="text-xs text-center">Already have an account? Login <a href="/login"
+                                    class="hover:underline text-customGreen font-semibold">Here</a></p>
+                        </div>
+                </form>
+
+                <script>
+                    const dismissBtn = document.getElementById('dismissBtn');
+                    const alertDismiss = document.getElementById('alertDismiss');
+
+                    if (dismissBtn && alertDismiss) {
+                        dismissBtn.addEventListener('click', () => {
+                            alertDismiss.style.display = 'none';
+                        });
+                    }
+                </script>
 
 
-                </div>
+
             </div>
         </div>
+    </div>
 
-        {{-- Footer Component --}}
-        @include('components.footer')
+    {{-- Footer Component --}}
+    @include('components.footer')
 
     </div>
 </body>
