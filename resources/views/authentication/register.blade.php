@@ -127,17 +127,6 @@
                         </div>
                 </form>
 
-                <script>
-                    const dismissBtn = document.getElementById('dismissBtn');
-                    const alertDismiss = document.getElementById('alertDismiss');
-
-                    if (dismissBtn && alertDismiss) {
-                        dismissBtn.addEventListener('click', () => {
-                            alertDismiss.style.display = 'none';
-                        });
-                    }
-                </script>
-
 
 
             </div>
