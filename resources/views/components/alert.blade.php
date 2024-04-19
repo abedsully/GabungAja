@@ -1,18 +1,22 @@
 @php
-    $bgColor = session('success') ? 'bg-green-500' : ($errors->any() ? 'bg-red-100' : '');
-    $iconColor = session('success') ? 'text-white' : ($errors->any() ? 'text-red-600' : '');
+    $bgColor = session('success') ? 'bg-green-500' : 'bg-red-100';
+    $iconColor = session('success') ? 'text-white' : 'text-red-600';
 @endphp
 
-@if ($errors->any() || session('success')) {{-- Checking for errors or success message --}}
+@if ($errors->any() || session('success') || session('loginError')) {{-- Checking for errors or success message --}}
     <div id="alertDismiss" class="relative {{ $bgColor }} rounded-md p-4 mb-4">
         <div class="flex items-center justify-between">
             @if ($errors->any())
                 <p class="text-red-600 text-sm">
                     Please fill all the requirements below!
                 </p>
-            @else
+            @elseif(session('success'))
                 <p class="text-white text-sm">
                     {{ session('success') }}
+                </p>
+            @elseif(session('loginError'))
+                <p class="text-red-600 text-sm">
+                    {{ session('loginError') }}
                 </p>
             @endif
             <button id="dismissBtn" type="button" class="{{ $iconColor }} focus:outline-none">
