@@ -37,3 +37,4 @@ Route::get('/home', [CommunityController::class, 'show']);
 // Community
 Route::get('/create-community', [CommunityController::class, 'create']);
 Route::post('/store-community', [CommunityController::class, 'store']);
+Route::get('/community/{id}', [CommunityController::class, 'index']);
