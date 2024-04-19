@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CommunityController extends Controller
 {
+    public function index($id)
+    {
+        $community = Community::findOrFail($id);
+
+        return view('community.community', compact('community'));
+    }
     public function create()
     {
         return view('community.createCommunity');
@@ -50,4 +56,10 @@ class CommunityController extends Controller
 
         return view('main.home', compact('communities'));
     }
+
+    // public function showDetail($id)
+    // {
+    //     $article = Community::find($id);
+    //     return view('')
+    // }
 }

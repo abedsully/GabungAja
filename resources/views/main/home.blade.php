@@ -48,7 +48,8 @@
                 @if ($communities->count() > 0)
                     @foreach ($communities as $community)
                         <div class="card card-compact w-[24rem] bg-base-100 shadow-xl">
-                            <figure><img class="w-[24rem] h-72 object-fill" src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
+                            <figure><img class="w-[24rem] h-[22rem] object-fill"
+                                    src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
                             </figure>
                             <div class="card-body flex">
 
@@ -61,24 +62,24 @@
                                 <div class="flex w-full justify-between items-center mt-2">
                                     <div class="flex flex-row gap-2 items-center">
                                         <div class="rating">
-                                            <input type="" name="rating-2"
-                                                class="mask mask-star-2 bg-orange-400" disabled/>
+                                            <input type="" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                                disabled />
                                             <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
                                                 disabled />
-                                            <input type="radio" name="rating-2"
-                                                class="mask mask-star-2 bg-orange-400" disabled/>
-                                            <input type="radio" name="rating-2"
-                                                class="mask mask-star-2 bg-orange-400" disabled/>
-                                            <input type="radio" name="rating-2"
-                                                class="mask mask-star-2 bg-orange-400" disabled/>
+                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                                disabled />
+                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                                disabled />
+                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                                disabled />
                                         </div>
                                         <p class="text-xs font-semibold">2/5</p>
                                     </div>
 
 
                                     <div class="card-actions">
-                                        <button
-                                            class="w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white">Join</button>
+                                        <a href="/community/{{ $community->id }}"
+                                            class="flex items-center justify-center w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white text-center">Join</a>
                                     </div>
                                 </div>
 

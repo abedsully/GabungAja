@@ -7,7 +7,7 @@
                         <a class="btn btn-ghost rounded-btn">Button</a>
                         <div class="dropdown dropdown-end">
                             <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><i
-                                    class="fa fa-user-circle text-3xl text-white"></i></div>
+                                    class="fa fa-user-circle text-4xl text-white"></i></div>
                             <ul tabindex="0"
                                 class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                 <form action="/logout" method="POST">
