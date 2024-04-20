@@ -17,6 +17,12 @@ class Community extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'members', 'community_id', 'user_id');
+    }
+    
+
     public static function boot()
     {
         parent::boot();

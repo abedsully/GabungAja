@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['fullName', 'username', 'email', 'phoneNumber', 'password', 'confirmPassword'];
+    protected $fillable = ['fullName', 'username', 'email', 'phoneNumber', 'bio', 'password', 'confirmPassword', 'profilePicture'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -38,6 +38,6 @@ class User extends Authenticatable
 
     public function communities()
     {
-        return $this->hasMany(Community::class);
+        return $this->belongsToMany(Community::class, 'members', 'user_id', 'community_id');
     }
 }

@@ -35,58 +35,67 @@
                         </div>
 
                         <h1 class="text-lg font-bold">{{ $community->name }}</h1>
+
+                        <form action="/join/{{ $community->id }}" method="POST">
+                            @csrf
+                            <button class="bg-customBrown text-white w-20 h-8 rounded-xl">Join</button>
+                        </form>
                     </div>
 
                 </div>
             </div>
 
             <!-- Content -->
-
             <div class="flex-1">
+                
+                <div class="w-full px-[3rem] text-lg breadcrumbs mt-[3rem]">
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/community/{{ $community->id }}" class="font-semibold">Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-center">
+                    @include('components.alert')
+                </div>
+
                 <div class="p-12 flex flex-col gap-12">
                     <div class="card w-full bg-customLightGreen shadow-md">
                         <div class="card-body">
                             <h2 class="text-2xl font-bold">{{ $community->motto }}</h2>
                             <div class="divider font-semibold">Community Description</div>
-                            <p class="text-justify">{{ $community->description }} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, fugit aut unde beatae ab asperiores aliquid cum aliquam illo natus placeat totam voluptates eius magni nam quos? Repellendus officiis voluptatem possimus, aut ducimus ipsam. Eligendi accusamus pariatur reprehenderit reiciendis assumenda nihil delectus, nesciunt, sint at, id perferendis facere debitis exercitationem!</p>
+                            <p class="text-justify">{{ $community->description }}</p>
                         </div>
                     </div>
 
                     <div class="card w-full bg-customLightGreen shadow-md">
                         <div class="card-body">
                             <h2 class="text-2xl font-bold">Member</h2>
-                            <div class="divider font-semibold">120 Members</div>
-                            <div class="avatar w-full flex justify-between mt-2">
-                                <div class="w-32 h-32 rounded-full bg-white">
-                                    <img src="{{ asset('storage/images/' . $community->logo) }}" />
-                                </div>
+                            <div class="divider font-semibold">{{ $members->count() }} Members</div>
+                            <div class="grid grid-cols-3 gap-4 mt-4">
+                                @foreach ($members as $member)
+                                    <div class="flex flex-col items-center">
+                                        <div class="avatar">
+                                            <div class="w-[8rem] h-[8rem] rounded-full bg-white">
+                                                <img
+                                                    src="{{ asset('storage/profile/' . $member->user->profilePicture) }}">
+                                            </div>
+                                        </div>
+                                        <p class="text-center mt-2">{{ $member->user->username }}</p>
 
-                                <div class="w-32 h-32 rounded-full">
-                                    <img src="{{ asset('storage/images/' . $community->logo) }}" />
-                                </div>
 
-                                <div class="w-32 h-32 rounded-full">
-                                    <img src="{{ asset('storage/images/' . $community->logo) }}" />
-                                </div>
-
-                                <div class="w-32 h-32 rounded-full">
-                                    <img src="{{ asset('storage/images/' . $community->logo) }}" />
-                                </div>
-
-                                <div class="w-32 h-32 rounded-full">
-                                    <img src="{{ asset('storage/images/' . $community->logo) }}" />
-                                </div>
-
-                                                                
-                                <div class="w-32 h-32 rounded-full">
-                                    <img src="{{ asset('storage/images/' . $community->logo) }}" />
-                                </div>
-
+                                    </div>
+                                @endforeach
                             </div>
-
-                            <a class="text-center cursor-pointer text-customBrown mt-8 font-semibold hover:underline">View All</a>
+                            <a class="text-center cursor-pointer text-customBrown mt-8 font-semibold hover:underline">View
+                                All</a>
                         </div>
                     </div>
+
+
+
+
+
 
                     <div class="card w-full bg-customLightGreen shadow-md">
                         <div class="card-body">
@@ -94,24 +103,37 @@
                             <div class="divider font-semibold">5 Posts</div>
                             <div class="flex flex-wrap justify-between px-16 gap-12">
                                 <div class="flex flex-col gap-2">
-                                    <img class="card w-[24rem]" src="{{ asset('storage/images/' . $community->logo) }}" />
-                                    <a href="" class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View Details</a>
+                                    <img class="card w-[20rem] h-[20rem] object-fill"
+                                        src="{{ asset('storage/images/' . $community->logo) }}" />
+                                    <a href=""
+                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
+                                        Details</a>
                                 </div>
 
                                 <div class="flex flex-col gap-2">
-                                    <img class="card w-[24rem]" src="{{ asset('storage/images/' . $community->logo) }}" />
-                                    <a href="" class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View Details</a>
+                                    <img class="card w-[20rem] h-[20rem] object-fill bg-white"
+                                        src="{{ asset('assets/logo.png') }}" />
+                                    <a href=""
+                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
+                                        Details</a>
                                 </div>
 
                                 <div class="flex flex-col gap-2">
-                                    <img class="card w-[24rem]" src="{{ asset('storage/images/' . $community->logo) }}" />
-                                    <a href="" class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View Details</a>
+                                    <img class="card w-[20rem] h-[20rem] object-fill"
+                                        src="{{ asset('storage/images/' . $community->logo) }}" />
+                                    <a href=""
+                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
+                                        Details</a>
                                 </div>
 
                                 <div class="flex flex-col gap-2">
-                                    <img class="card w-[24rem]" src="{{ asset('storage/images/' . $community->logo) }}" />
-                                    <a href="" class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View Details</a>
+                                    <img class="card w-[20rem] h-[20rem] object-fill bg-white"
+                                        src="{{ asset('assets/logo.png') }}" />
+                                    <a href=""
+                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
+                                        Details</a>
                                 </div>
+
 
                             </div>
 

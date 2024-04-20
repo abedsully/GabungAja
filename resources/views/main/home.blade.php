@@ -47,16 +47,18 @@
             <div class="flex flex-wrap justify-between px-16 gap-12">
                 @if ($communities->count() > 0)
                     @foreach ($communities as $community)
-                        <div class="card card-compact w-[24rem] bg-base-100 shadow-xl">
-                            <figure><img class="w-[24rem] h-[22rem] object-fill"
+                        <div class="card card-compact w-[22rem] bg-base-100 shadow-xl">
+                            <figure><img class="w-[22rem] h-[16rem] object-fill"
                                     src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
                             </figure>
                             <div class="card-body flex">
 
-                                <h2 class="card-title">{{ $community->name }}</h2>
-                                <p class="text-sm"><i class="fa fa-user"></i> 120 Members</p>
-                                <p class="text-sm"><i class="fa fa-map"></i> {{ $community->location }}</p>
-                                <p class="text-sm"><i class="fa fa-list-alt"></i> {{ $community->category }} </p>
+                                <h2 class="card-title">{{ ucwords($community->name) }}</h2>
+                                <p class="text-sm"><i class="fa fa-user"></i> {{ $community->members->count() }} Members
+                                </p>
+                                <p class="text-sm"><i class="fa fa-map"></i> {{ ucwords($community->location) }}</p>
+                                <p class="text-sm"><i class="fa fa-list-alt"></i> {{ ucwords($community->category) }}
+                                </p>
                                 <hr>
 
                                 <div class="flex w-full justify-between items-center mt-2">
@@ -79,83 +81,17 @@
 
                                     <div class="card-actions">
                                         <a href="/community/{{ $community->id }}"
-                                            class="flex items-center justify-center w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white text-center">Join</a>
+                                            class="flex items-center justify-center w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white text-center">Details</a>
                                     </div>
                                 </div>
-
                             </div>
 
                         </div>
                     @endforeach
                 @else
-                    <p class="text-3xl">No Communities Yet!</p>
+                    <p class="w-full text-3xl text-center">No Communities Yet!</p>
                 @endif
 
-
-                <div class="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -164,7 +100,9 @@
 
 
         {{-- Footer Component --}}
-        @include('components.footer')
+        <div class="mt-[10rem]">
+            @include('components.footer')
+        </div>
 
 
     </div>

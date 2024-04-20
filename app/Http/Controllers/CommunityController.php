@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Community;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class CommunityController extends Controller
@@ -10,8 +11,9 @@ class CommunityController extends Controller
     public function index($id)
     {
         $community = Community::findOrFail($id);
+        $members = Member::where('community_id', $id)->with('user')->get();
 
-        return view('community.community', compact('community'));
+        return view('community.community', compact('community', 'members'));
     }
     public function create()
     {
@@ -25,26 +27,33 @@ class CommunityController extends Controller
             'category' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'logo' => 'required',
+            'logo' => 'required|image',
         ]);
 
         $currentUid = auth()->id();
 
-        if ($request->file('logo') != null) {
+        $filename = null;
+
+        if ($request->file('logo')) {
             $extension = $request->file('logo')->getClientOriginalExtension();
             $originalName = pathinfo($request->file('logo')->getClientOriginalName(), PATHINFO_FILENAME);
-            $filename = $originalName . $currentUid . '_' . $extension;
-            $request->file('logo')->storeAs('/public/images', $filename);
+            $filename = $originalName . '_' . time() . '.' . $extension;
+            $request->file('logo')->storeAs('public/images', $filename);
         }
 
-        Community::create([
+        $community = Community::create([
             'user_id' => $currentUid,
             'name' => $request->name,
             'motto' => $request->motto,
             'category' => $request->category,
-            'description' => $request->name,
+            'description' => $request->description,
             'location' => $request->location,
             'logo' => $filename,
+        ]);
+
+        Member::create([
+            'community_id' => $community->id,
+            'user_id' => $currentUid,
         ]);
 
         return redirect('/home')->with('success', 'Community has been created successfully!');
@@ -56,10 +65,4 @@ class CommunityController extends Controller
 
         return view('main.home', compact('communities'));
     }
-
-    // public function showDetail($id)
-    // {
-    //     $article = Community::find($id);
-    //     return view('')
-    // }
 }
