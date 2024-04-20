@@ -3,7 +3,7 @@
     $iconColor = session('success') ? 'text-white' : 'text-red-600';
 @endphp
 
-@if ($errors->any() || session('success') || session('loginError')) {{-- Checking for errors or success message --}}
+@if ($errors->any() || session('success') || session('loginError'))
     <div id="alertDismiss" class="relative {{ $bgColor }} rounded-md p-4 mb-4">
         <div class="flex items-center justify-between">
             @if ($errors->any())

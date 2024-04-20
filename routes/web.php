@@ -44,5 +44,4 @@ Route::patch('/update-profile/{id}', [UserController::class, 'updateProfile']);
 Route::get('/create-community', [CommunityController::class, 'create']);
 Route::post('/store-community', [CommunityController::class, 'store']);
 Route::get('/community/{id}', [CommunityController::class, 'index']);
-
 Route::post('/join/{id}', [MemberController::class, 'join']);
