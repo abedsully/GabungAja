@@ -100,7 +100,7 @@
                             </label>
                             <textarea id="bio" name="bio"
                                 class="h-[14rem] shadow appearance-none border resize-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                placeholder="Enter your bio" maxlength="200"></textarea>
+                                placeholder="Enter your bio" maxlength="200">{{$user->bio}}</textarea>
                             <div class="flex justify-between">
                                 @error('bio')
                                     <div class="text-xs text-red-500 p-1 font-semibold">

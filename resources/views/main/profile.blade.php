@@ -46,7 +46,8 @@
                     <i class="fa fa-user-circle text-[10rem] text-black"></i>
                 @endif
 
-                <form action="/store-picture/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data">
+                <form id="profilePictureForm" action="/store-picture/{{ auth()->user()->id }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('patch')
 
@@ -55,11 +56,10 @@
                             Change Profile Photo
                         </label>
 
-                        <input id="file-upload" type="file" name="profilePicture" class="hidden">
-                        <button class="bg-customBrown text-white w-20 h-8 rounded-xl">Confirm</button>
+                        <input id="file-upload" type="file" name="profilePicture" class="hidden"
+                            onchange="uploadProfilePicture(this)">
                     </div>
                 </form>
-
             </div>
 
 
@@ -96,50 +96,50 @@
         <div class="divider font-semibold">Community List</div>
 
         @if ($communities->count() > 0)
-        <div class="flex flex-wrap justify-center px-16 gap-12">
-            @foreach ($communities as $c)
-                <div class="card card-compact w-[22rem] bg-base-100 shadow-xl">
-                    <figure><img class="w-[22rem] h-[16rem] object-fill" src="{{ asset('storage/images/' . $c->logo) }}"
-                            alt="Shoes" />
-                    </figure>
-                    <div class="card-body flex">
+            <div class="flex flex-wrap justify-center px-16 gap-12">
+                @foreach ($communities as $c)
+                    <div class="card card-compact w-[22rem] bg-base-100 shadow-xl">
+                        <figure><img class="w-[22rem] h-[16rem] object-fill"
+                                src="{{ asset('storage/images/' . $c->logo) }}" alt="Shoes" />
+                        </figure>
+                        <div class="card-body flex">
 
-                        <h2 class="card-title">{{ ucwords($c->name) }}</h2>
-                        <p class="text-sm"><i class="fa fa-user"></i> {{ $c->members->count() }} Members</p>
-                        <p class="text-sm"><i class="fa fa-map"></i> {{ ucwords($c->location) }}</p>
-                        <p class="text-sm"><i class="fa fa-list-alt"></i> {{ $c->name }} </p>
-                        <hr>
+                            <h2 class="card-title">{{ ucwords($c->name) }}</h2>
+                            <p class="text-sm"><i class="fa fa-user"></i> {{ $c->members->count() }} Members</p>
+                            <p class="text-sm"><i class="fa fa-map"></i> {{ ucwords($c->location) }}</p>
+                            <p class="text-sm"><i class="fa fa-list-alt"></i> {{ $c->name }} </p>
+                            <hr>
 
-                        <div class="flex w-full justify-between items-center mt-2">
-                            <div class="flex flex-row gap-2 items-center">
-                                <div class="rating">
-                                    <input type="" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                        disabled />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                        disabled />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                        disabled />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                        disabled />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                        disabled />
+                            <div class="flex w-full justify-between items-center mt-2">
+                                <div class="flex flex-row gap-2 items-center">
+                                    <div class="rating">
+                                        <input type="" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                            disabled />
+                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                            disabled />
+                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                            disabled />
+                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                            disabled />
+                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
+                                            disabled />
+                                    </div>
+                                    <p class="text-xs font-semibold">2/5</p>
                                 </div>
-                                <p class="text-xs font-semibold">2/5</p>
-                            </div>
 
 
-                            <div class="card-actions">
-                                <a href="/community/{{ $c->id }}"
-                                    class="flex items-center justify-center w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white text-center">Details</a>
+                                <div class="card-actions">
+                                    <a href="/community/{{ $c->id }}"
+                                        class="flex items-center justify-center w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white text-center">Details</a>
+                                </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
         @else
-        <p class="text-center text-3xl">No Communities Yet</p>
+            <p class="text-center text-3xl">No Communities Yet</p>
         @endif
         {{-- Footer Component --}}
         <div class="mt-10">
@@ -149,5 +149,11 @@
 </body>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script>
+    function uploadProfilePicture(input) {
+        var form = document.getElementById('profilePictureForm');
+        form.submit();
+    }
+</script>
 
 </html>
