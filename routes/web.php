@@ -15,33 +15,35 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the 'web' middleware group. Make something great!
 |
 */
 
+// Landing
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('main.landing');
 });
 
 // Authentication
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'register']);
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get( '/register', [ RegisterController::class, 'index' ] );
+Route::post( '/register', [ RegisterController::class, 'register' ] );
+Route::get( '/login', [ LoginController::class, 'index' ] );
+Route::post( '/login', [ LoginController::class, 'login' ] );
+Route::post( '/logout', [ LoginController::class, 'logout' ] );
 
 // Main
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/home', [CommunityController::class, 'show']);
+Route::get( '/home', [ HomeController::class, 'index' ] );
+Route::get( '/home', [ CommunityController::class, 'show' ] );
 
 // Profile
-Route::get('/profile/{id}', [UserController::class, 'showProfile']);
-Route::patch('/store-picture/{id}', [UserController::class, 'storeProfilePicture']);
-Route::get('/edit-profile/{id}', [UserController::class, 'editProfile']);
-Route::patch('/update-profile/{id}', [UserController::class, 'updateProfile']);
+Route::get( '/profile/{id}', [ UserController::class, 'showProfile' ] );
+Route::patch( '/store-picture/{id}', [ UserController::class, 'storeProfilePicture' ] );
+Route::get( '/edit-profile/{id}', [ UserController::class, 'editProfile' ] );
+Route::patch( '/update-profile/{id}', [ UserController::class, 'updateProfile' ] );
 
 // Community
-Route::get('/create-community', [CommunityController::class, 'create']);
-Route::post('/store-community', [CommunityController::class, 'store']);
-Route::get('/community/{id}', [CommunityController::class, 'index']);
-Route::post('/join/{id}', [MemberController::class, 'join']);
+Route::get( '/create-community', [ CommunityController::class, 'create' ] );
+Route::post( '/store-community', [ CommunityController::class, 'store' ] );
+Route::get( '/community/{id}', [ CommunityController::class, 'index' ] );
+Route::post( '/join/{id}', [ MemberController::class, 'join' ] );

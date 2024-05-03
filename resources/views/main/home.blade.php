@@ -100,7 +100,7 @@
 
 
         {{-- Footer Component --}}
-        <div class="mt-[10rem]">
+        <div class="mt-[20rem]">
             @include('components.footer')
         </div>
 
