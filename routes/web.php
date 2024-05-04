@@ -20,30 +20,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing
-
-Route::get('/', function () {
-    return view('main.landing');
-});
+Route::get( '/', [ HomeController::class, 'landing' ] )->middleware( 'guest' );
 
 // Authentication
-Route::get( '/register', [ RegisterController::class, 'index' ] );
-Route::post( '/register', [ RegisterController::class, 'register' ] );
-Route::get( '/login', [ LoginController::class, 'index' ] );
-Route::post( '/login', [ LoginController::class, 'login' ] );
+Route::get( '/register', [ RegisterController::class, 'index' ] )->middleware( 'guest' );
+Route::post( '/register', [ RegisterController::class, 'register' ] )->middleware( 'guest' );
+Route::get( '/login', [ LoginController::class, 'index' ] )->name( 'login' )->middleware( 'guest' );
+Route::post( '/login', [ LoginController::class, 'login' ] )->middleware( 'guest' );
 Route::post( '/logout', [ LoginController::class, 'logout' ] );
 
 // Main
-Route::get( '/home', [ HomeController::class, 'index' ] );
-Route::get( '/home', [ CommunityController::class, 'show' ] );
+Route::get( '/home', [ HomeController::class, 'index' ] ) -> middleware( 'auth' );
+Route::get( '/home', [ CommunityController::class, 'show' ] ) ->middleware( 'auth' );
 
 // Profile
-Route::get( '/profile/{id}', [ UserController::class, 'showProfile' ] );
-Route::patch( '/store-picture/{id}', [ UserController::class, 'storeProfilePicture' ] );
-Route::get( '/edit-profile/{id}', [ UserController::class, 'editProfile' ] );
-Route::patch( '/update-profile/{id}', [ UserController::class, 'updateProfile' ] );
+Route::get( '/profile/{id}', [ UserController::class, 'showProfile' ] )->middleware( 'auth' );
+Route::patch( '/store-picture/{id}', [ UserController::class, 'storeProfilePicture' ] )->middleware( 'auth' );
+Route::get( '/edit-profile/{id}', [ UserController::class, 'editProfile' ] )->middleware( 'auth' );
+Route::patch( '/update-profile/{id}', [ UserController::class, 'updateProfile' ] )->middleware( 'auth' );
 
 // Community
-Route::get( '/create-community', [ CommunityController::class, 'create' ] );
-Route::post( '/store-community', [ CommunityController::class, 'store' ] );
-Route::get( '/community/{id}', [ CommunityController::class, 'index' ] );
-Route::post( '/join/{id}', [ MemberController::class, 'join' ] );
+Route::get( '/create-community', [ CommunityController::class, 'create' ] ) -> middleware( 'auth' );
+Route::post( '/store-community', [ CommunityController::class, 'store' ] ) -> middleware( 'auth' );
+Route::get( '/community/{id}', [ CommunityController::class, 'index' ] ) -> middleware( 'auth' );
+Route::post( '/join/{id}', [ MemberController::class, 'join' ] ) -> middleware( 'auth' );

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>GabungAja</title>
     {{-- Website Icon --}}
     <link rel="icon" href="{{ asset('assets/logo.png') }}">
     {{-- Tailwind CSS --}}
@@ -56,12 +56,12 @@
         
         
         <div class="w-full h-[25rem] p-[4rem]">
-            <div class="flex gap-[8rem] items-center">
+            <div class="flex items-center">
                 <div class="flex flex-col gap-[2rem]">
-                        <p class="text-black text-6xl w-[70rem]">Welcome to <span class="text-customBrown">Gabung Aja</span>: Your Ultimate Community and Socializing Platform!
+                        <p class="text-black text-6xl w-[50rem]"><span class="text-customBrown">Gabung Aja</span>: Your Ultimate Community and Socializing Platform!
                         </p>
 
-                        <p class="text-2xl w-[70rem]">Experience the thrill of connecting with fellow gamers and enthusiasts. Gabung Aja is your one-stop destination to discover communities, make new friends, and embark on exciting gaming adventures together.</p>
+                        <p class="text-2xl w-[40rem]">Experience the thrill of connecting with fellow gamers and enthusiasts. Gabung Aja is your one-stop destination to discover communities, make new friends, and embark on exciting gaming adventures together.</p>
                 </div>
 
 

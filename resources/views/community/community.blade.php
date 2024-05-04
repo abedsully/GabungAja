@@ -36,10 +36,15 @@
 
                         <h1 class="text-lg font-bold">{{ $community->name }}</h1>
 
-                        <form action="/join/{{ $community->id }}" method="POST">
-                            @csrf
-                            <button class="bg-customBrown text-white w-20 h-8 rounded-xl">Join</button>
-                        </form>
+
+@if(!$isMember)
+    <form action="/join/{{ $community->id }}" method="POST">
+        @csrf
+        <button class="bg-customBrown text-white w-20 h-8 rounded-xl">Join</button>
+    </form>
+@else
+    <span>You are part of this community</span>
+@endif
                     </div>
 
                 </div>
