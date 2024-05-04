@@ -28,7 +28,7 @@
 
                     <div class="flex gap-[4rem]">
                         <a href="#">Home</a>
-                        <a href="#ourfeatures">Our Features</a>
+                        <a href="#ourfeatures" class="text-white">Our Features</a>
                         <a href="#testimonies">Testimonies</a>
                         <a href="#faq"">FAQ</a>
                         <a href="#aboutus">About Us</a>
