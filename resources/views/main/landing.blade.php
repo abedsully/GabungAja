@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
                         <a href="#">Home</a>
                         <a href="#ourfeatures">Our Features</a>
                         <a href="#testimonies">Testimonies</a>
-                        <a href="#faq">FAQ</a>
+                        <a href="#faq"">FAQ</a>
                         <a href="#aboutus">About Us</a>
                     </div>
 
