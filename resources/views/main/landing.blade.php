@@ -27,11 +27,11 @@
                     <img src="{{ asset('assets/logo.png') }}" class="w-20 h-20" alt="logo">
 
                     <div class="flex gap-[4rem]">
-                        <a href="#">Home</a>
+                        <a href="#" class="text-white">Home</a>
                         <a href="#ourfeatures" class="text-white">Our Features</a>
-                        <a href="#testimonies">Testimonies</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#aboutus">About Us</a>
+                        <a href="#testimonies" class="text-white">Testimonies</a>
+                        <a href="#faq" class="text-white">FAQ</a>
+                        <a href="#aboutus" class="text-white">About Us</a>
                     </div>
 
                     
