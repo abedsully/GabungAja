@@ -66,12 +66,13 @@ class CommunityController extends Controller {
     public function search(Request $request)
     {
         $communities = Community::query();
-
+    
         if ($request->has('search')) {
             $searchTerm = $request->search;
     
             $communities->where(function ($query) use ($searchTerm) {
-                $query->where('title', 'LIKE', '%' . $searchTerm . '%')
+                $query->where('name', 'LIKE', '%' . $searchTerm . '%')
+                      ->orWhere('location', 'LIKE', '%' . $searchTerm . '%')
                       ->orWhereHas('user', function ($userQuery) use ($searchTerm) {
                           $userQuery->where('username', 'LIKE', '%' . $searchTerm . '%');
                       });
@@ -82,6 +83,7 @@ class CommunityController extends Controller {
     
         return view('main.home', compact('communities'));
     }
+    
 
     public function show() 
     {

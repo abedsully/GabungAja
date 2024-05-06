@@ -32,6 +32,7 @@ Route::post( '/logout', [ LoginController::class, 'logout' ] );
 // Main
 Route::get( '/home', [ HomeController::class, 'index' ] ) -> middleware( 'auth' );
 Route::get( '/home', [ CommunityController::class, 'show' ] ) ->middleware( 'auth' );
+Route::get( '/search', [ CommunityController::class, 'search' ] )->middleware( 'auth' );
 
 // Profile
 Route::get( '/profile/{id}', [ UserController::class, 'showProfile' ] )->middleware( 'auth' );

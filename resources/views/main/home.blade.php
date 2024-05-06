@@ -30,10 +30,13 @@
 
         <div class="flex justify-center px-16 items-center">
             <div class="flex flex-col gap-3">
-                <label class="input input-bordered flex items-center gap-2 w-[30rem]">
-                    <input type="text" class="grow" placeholder="Search Anything Here" />
-                    <kbd class="kbd kbd-xl"><i class="fa fa-search"></i></kbd>
-                </label>
+                <form action="/search" method="GET">
+                    <label class="input input-bordered flex items-center gap-2 w-[30rem]">
+                        <input type="text" class="grow" placeholder="Search Anything Here" name="search">
+                        <button class="kbd kbd-xl" type="submit"><i class="fa fa-search"></i></button>
+                    </label>
+                </form>
+
 
 
                 <p class="text-sm font-medium text-center ">Can't find your community? Make one <a
