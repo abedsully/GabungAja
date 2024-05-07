@@ -1,7 +1,7 @@
         {{-- Navbar --}}
         <div class="px-3 bg-customGreen">
             <div class="navbar">
-                <a href="/"><img src="{{ asset('assets/logo.png') }}" class="w-20 h-20" alt="logo"></a>
+                <a href="/"><img src="{{ asset('assets/grey.png') }}" class="w-20 h-20" alt="logo"></a>
                 <div class="flex justify-end flex-1 px-2">
                     <div class="flex items-stretch">
                         <a class="btn btn-ghost rounded-btn">Button</a>
