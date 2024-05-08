@@ -13,11 +13,12 @@ class CommunityController extends Controller {
     public function index($id) {
         $community = Community::findOrFail($id);
         $members = Member::where('community_id', $id)->with('user')->take(3)->get();
+        $membersCount = Member::where('community_id', $id)->with('user')->get();
         $posts = CommunityPost::where('community_id', $id)->get();
 
         $isMember = Member::where('community_id', $id)->where('user_id', auth()->id())->exists();
     
-        return view('community.community', compact('community', 'members', 'isMember', 'posts'));
+        return view('community.community', compact('community', 'members', 'isMember', 'posts', 'membersCount'));
     }
     
 
