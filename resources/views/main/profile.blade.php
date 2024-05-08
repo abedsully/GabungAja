@@ -65,7 +65,7 @@
 
             <div class="card w-full h-max bg-customLightGreen shadow-md">
                 <div class="card-body">
-                    <h2 class="text-2xl font-bold">abedsully</h2>
+                    <h2 class="text-2xl font-bold">{{ $user->username }}</h2>
                     <div class="divider font-semibold">Profile Details</div>
                     <div class="flex flex-col gap-6">
                         <p class="text-lg font-semibold">Full Name: <span
@@ -78,10 +78,12 @@
                         @endif
 
                         <div class="flex justify-between mt-5">
-                            <div class="font-semibold hover:underline text-lg">
-                                <a href="/edit-profile/{{ $user->id }}"><i class="fa fa-pencil"></i> Edit
-                                    Profile</a>
-                            </div>
+                            @if (Auth::user()->id == $user->id)
+                                <div class="font-semibold hover:underline text-lg">
+                                    <a href="/edit-profile/{{ $user->id }}"><i class="fa fa-pencil"></i> Edit Profile</a>
+                                </div>
+                            @endif
+
 
                             <p class="text-end text-lg font-semibold">Since: {{ $user->created_at->format('d/m/Y') }}
                             </p>

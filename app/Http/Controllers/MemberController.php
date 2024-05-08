@@ -25,12 +25,23 @@ class MemberController extends Controller
         return redirect('/community/' . $id)->with('success', 'You are now part of ' . $community->name);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function showMembers($id) {
+        $community = Community::findOrFail($id);
+        $members = Member::where('community_id', $id)->with('user')->get();
+    
+        return view('community.memberView', compact('community', 'members'));
+    }
+
+
+    public function delete($id)
     {
-        //
+        $member = Member::findOrFail($id);
+
+        $community_id = $member->community_id;
+
+        Member::destroy($id);
+
+        return redirect('/showMember/' . $community_id)->with('success', 'Member has been removed successfully!');
     }
 
     /**
@@ -65,11 +76,5 @@ class MemberController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Member $member)
-    {
-        //
-    }
+
 }

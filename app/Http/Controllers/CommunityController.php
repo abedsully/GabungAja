@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Community;
+use App\Models\CommunityPost;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,12 +12,12 @@ use Illuminate\Support\Facades\Auth;
 class CommunityController extends Controller {
     public function index($id) {
         $community = Community::findOrFail($id);
-        $members = Member::where('community_id', $id)->with('user')->get();
-    
-        
+        $members = Member::where('community_id', $id)->with('user')->take(3)->get();
+        $posts = CommunityPost::where('community_id', $id)->get();
+
         $isMember = Member::where('community_id', $id)->where('user_id', auth()->id())->exists();
     
-        return view('community.community', compact('community', 'members', 'isMember'));
+        return view('community.community', compact('community', 'members', 'isMember', 'posts'));
     }
     
 

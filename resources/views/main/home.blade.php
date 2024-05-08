@@ -57,10 +57,10 @@
                             <div class="card-body flex">
 
                                 <h2 class="card-title">{{ ucwords($community->name) }}</h2>
-                                <p class="text-sm"><i class="fa fa-user"></i> {{ $community->members->count() }} Members
+                                <p class="text-sm m"><i class="fa fa-user mr-1"></i> {{ $community->members->count() }} Members
                                 </p>
-                                <p class="text-sm"><i class="fa fa-map"></i> {{ ucwords($community->location) }}</p>
-                                <p class="text-sm"><i class="fa fa-list-alt"></i> {{ ucwords($community->category) }}
+                                <p class="text-sm"><i class="fa fa-map mr-1"></i> {{ ucwords($community->location) }}</p>
+                                <p class="text-sm"><i class="fa fa-list-alt mr-1"></i> {{ ucwords($community->category) }}
                                 </p>
                                 <hr>
 

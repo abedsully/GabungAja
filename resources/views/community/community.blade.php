@@ -34,17 +34,21 @@
                             <img src="{{ asset('storage/images/' . $community->logo) }}" />
                         </div>
 
-                        <h1 class="text-lg font-bold">{{ $community->name }}</h1>
+                        <h1 class="text-lg font-bold">{{ucwords($community->name)}}</h1>
 
 
-@if(!$isMember)
-    <form action="/join/{{ $community->id }}" method="POST">
-        @csrf
-        <button class="bg-customBrown text-white w-20 h-8 rounded-xl">Join</button>
-    </form>
-@else
-    <span>You are part of this community</span>
-@endif
+                @if(!$isMember)
+                    <form action="/join/{{ $community->id }}" method="POST">
+                        @csrf
+                        <button class="bg-customBrown text-white w-20 h-8 rounded-xl">Join</button>
+                    </form>
+                @endif
+
+
+                @if(Auth::user()->id == $community->user_id)
+                    <a href="/create-post/{{ $community->id }}" class="mt-5 bg-customBrown p-3 text-white rounded-lg hover:opacity-90">Create Post</a>
+                @endif
+
                     </div>
 
                 </div>
@@ -56,7 +60,7 @@
                 <div class="w-full px-[3rem] text-lg breadcrumbs mt-[3rem]">
                     <ul>
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/community/{{ $community->id }}" class="font-semibold">Community</a></li>
+                        <li><a href="/community/{{ $community->id }}" class="font-semibold">{{ucwords($community->name)}}</a></li>
                     </ul>
                 </div>
 
@@ -92,71 +96,38 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a class="text-center cursor-pointer text-customBrown mt-8 font-semibold hover:underline">View
-                                All</a>
+                            <a class="text-center cursor-pointer text-customBrown mt-8 font-semibold hover:underline" href="/showMember/{{$community->id}}">View All</a>
                         </div>
                     </div>
-
-
-
-
-
-
+                    
                     <div class="card w-full bg-customLightGreen shadow-md">
                         <div class="card-body">
                             <h2 class="text-2xl font-bold">Community Posts</h2>
-                            <div class="divider font-semibold">5 Posts</div>
-                            <div class="flex flex-wrap justify-between px-16 gap-12">
-                                <div class="flex flex-col gap-2">
-                                    <img class="card w-[20rem] h-[20rem] object-fill"
-                                        src="{{ asset('storage/images/' . $community->logo) }}" />
-                                    <a href=""
-                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
-                                        Details</a>
-                                </div>
+                            <div class="divider font-semibold">{{ $posts->count() }} Posts</div>
+                    
+                            <div class="grid grid-cols-2 gap-12">
+                                @if ($posts->count() > 0 && $posts->first()->community_id == $community->id)
+                                    @foreach ($posts as $post)
+                                    <div class="max-w-[24rem] max-h-[34rem] rounded-lg overflow-hidden shadow-lg bg-white">
+                                        <img src="{{ asset('storage/images/' . $post->image) }}" class="w-[24rem] h-[20rem]"/>
+                                        <div class="px-6 py-4">
+                                          <div class="font-bold text-xl mb-2">{{ ucwords($post->title) }}</div>
+                                          <p class="text-gray-700 text-base h-[5rem]">
+                                            {{ Str::limit($post->content, 180, '...') }} 
+                                          </p>
 
-                                <div class="flex flex-col gap-2">
-                                    <img class="card w-[20rem] h-[20rem] object-fill bg-white"
-                                        src="{{ asset('assets/logo.png') }}" />
-                                    <a href=""
-                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
-                                        Details</a>
-                                </div>
-
-                                <div class="flex flex-col gap-2">
-                                    <img class="card w-[20rem] h-[20rem] object-fill"
-                                        src="{{ asset('storage/images/' . $community->logo) }}" />
-                                    <a href=""
-                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
-                                        Details</a>
-                                </div>
-
-                                <div class="flex flex-col gap-2">
-                                    <img class="card w-[20rem] h-[20rem] object-fill bg-white"
-                                        src="{{ asset('assets/logo.png') }}" />
-                                    <a href=""
-                                        class="text-center cursor-pointer text-customBrown font-semibold hover:underline">View
-                                        Details</a>
-                                </div>
-
-
+                                          <p class="font-semibold mt-[3rem] text-end">Posted: {{$post->created_at->format('d/m/Y')}}</p>
+                                        </div>
+                                      </div>
+                                    @endforeach
+                                @endif
                             </div>
-
                         </div>
                     </div>
-
+                    
                 </div>
 
             </div>
-
-
-
-
-
-
-
-
-
         </div>
 
 

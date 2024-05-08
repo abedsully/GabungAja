@@ -137,7 +137,7 @@
                             </label>
 
                             <input name="logo" type="file"
-                                class="file-input file-input border-gray-200 shadow rounded w-full h-10" />
+                                class="file-input border-gray-200 shadow rounded w-full h-10" />
                             @error('logo')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}

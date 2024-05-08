@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommunityPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,3 +46,7 @@ Route::get( '/create-community', [ CommunityController::class, 'create' ] ) -> m
 Route::post( '/store-community', [ CommunityController::class, 'store' ] ) -> middleware( 'auth' );
 Route::get( '/community/{id}', [ CommunityController::class, 'index' ] ) -> middleware( 'auth' );
 Route::post( '/join/{id}', [ MemberController::class, 'join' ] ) -> middleware( 'auth' );
+Route::get( '/create-post/{id}', [ CommunityPostController::class, 'create' ] ) -> middleware( 'auth' );
+Route::post( '/store-post/{id}', [ CommunityPostController::class, 'store' ] ) -> middleware( 'auth' );
+Route::get( '/showMember/{id}', [ MemberController::class, 'showMembers' ] ) -> middleware( 'auth' );
+Route::delete('/deleteMember/{id}', [MemberController::class, 'delete'])->middleware('auth');
