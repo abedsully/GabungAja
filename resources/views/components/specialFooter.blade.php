@@ -2,7 +2,7 @@
 
     <div class="flex justify-between items-center w-full">
         <div class="flex flex-col gap-3 items-center">
-            <img src="{{ asset('assets/logo.png') }}" class="w-20 h-20" alt="logo">
+            <img src="{{ asset('assets/grey.png') }}" class="w-20 h-20" alt="logo">
             <p class="text-xs">© Gabung Aja 2024</p>
         </div>
 

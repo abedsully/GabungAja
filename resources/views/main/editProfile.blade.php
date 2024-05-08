@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     {{-- Website Icon --}}
-    <link rel="icon" href="{{ asset('assets/logo.png') }}">
+    <link rel="icon" href="{{ asset('assets/grey.png') }}">
     {{-- Tailwind CSS --}}
     @vite('resources/css/app.css')
     {{-- Daisy UI CDN --}}

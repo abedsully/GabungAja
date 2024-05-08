@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     {{-- Website Icon --}}
-    <link rel="icon" href="{{ asset('assets/logo.png') }}">
+    <link rel="icon" href="{{ asset('assets/grey.png') }}">
     {{-- Tailwind CSS --}}
     @vite('resources/css/app.css')
     {{-- Daisy UI CDN --}}
@@ -35,7 +35,7 @@
                 <div class="card w-104 bg-base-100 shadow-xl p-10">
 
                     <div class="flex justify-center">
-                        <img src="{{ asset('assets/logo.png') }}" class="w-32 h-32" alt="logo">
+                        <img src="{{ asset('assets/grey.png') }}" class="w-32 h-32" alt="logo">
                     </div>
 
 
