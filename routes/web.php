@@ -7,6 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommunityPostController;
+use App\Http\Controllers\ForgetPassController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::post( '/register', [ RegisterController::class, 'register' ] )->middlewar
 Route::get( '/login', [ LoginController::class, 'index' ] )->name( 'login' )->middleware( 'guest' );
 Route::post( '/login', [ LoginController::class, 'login' ] )->middleware( 'guest' );
 Route::post( '/logout', [ LoginController::class, 'logout' ] );
+Route::get('/forgetPass', [ForgetPassController::class, 'index'])->middleware('guest');
+Route::post('/forgetPass', [ForgetPassController::class, 'forgetPass'])->middleware('guest');
 
 // Main
 Route::get( '/home', [ HomeController::class, 'index' ] ) -> middleware( 'auth' );

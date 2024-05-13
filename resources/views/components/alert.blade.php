@@ -3,7 +3,7 @@
     $iconColor = session('success') ? 'text-white' : 'text-red-600';
 @endphp
 
-@if ($errors->any() || session('success') || session('loginError'))
+@if ($errors->any() || session('success') || session('loginError') || session('error'))
     <div id="alertDismiss" class="relative {{ $bgColor }} rounded-md p-4 mb-4">
         <div class="flex items-center justify-between">
             @if ($errors->any())
@@ -17,6 +17,10 @@
             @elseif(session('loginError'))
                 <p class="text-red-600 text-sm">
                     {{ session('loginError') }}
+                </p>
+            @elseif(session('error'))
+                <p class="text-red-600 text-sm">
+                    {{ session('error') }}
                 </p>
             @endif
             <button id="dismissBtn" type="button" class="{{ $iconColor }} focus:outline-none">

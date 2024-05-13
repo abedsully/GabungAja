@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Forgot Password</title>
     {{-- Website Icon --}}
     <link rel="icon" href="{{ asset('assets/grey.png') }}">
     {{-- Tailwind CSS --}}
@@ -29,7 +29,7 @@
 
 
         {{-- Register Form --}}
-        <form action="/login" method="POST">
+        <form action="/forgetPass" method="POST">
             @csrf
             <div class="flex justify-center">
                 <div class="card w-104 bg-base-100 shadow-xl p-10">
@@ -51,24 +51,28 @@
 
                         <div class="mb-4">
                             <label class="text-gray-700 text-sm font-medium mb-2">
-                                Password
+                                New Password
                             </label>
                             <input
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="password" placeholder="Enter you password" name="password">
-                            <p class="text-xs text-customGreen font-semibold cursor-pointer text-end mt-2"> <a href="/forgetPass">Forgot
-                                Password?</a>
+                                type="password" placeholder="Enter you new password" name="newPassword">
+                            </p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="text-gray-700 text-sm font-medium mb-2">
+                                Confirm New Password
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="password" placeholder="Enter you new password" name="confirmNewPassword">
                             </p>
                         </div>
 
                         <div class="flex flex-col gap-6">
                             <button
-                                class="bg-customGreen border rounded h-10 hover:brightness-95 text-white">Login</button>
-
-                            <p class="text-xs text-center">Don't have an account? Register <a href="/register"
-                                    class="hover:underline text-customGreen font-semibold">Here</a></p>
+                                class="bg-customGreen border rounded h-10 hover:brightness-95 text-white">Reset Password</button>
                         </div>
-
 
                     </div>
                 </div>
