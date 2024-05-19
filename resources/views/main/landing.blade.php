@@ -250,7 +250,7 @@
             Whether you're a seasoned enthusiast seeking like-minded individuals or a curious explorer looking to 
             broaden your horizons, GabungAja is here to help you find your tribe.
             </p>
-            <br><br>
+            <br>
             <p class="text-center text-3xl">What We Offer</p>
             <br>
             <p class = "text-justify text-xl">
