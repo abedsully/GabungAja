@@ -23,6 +23,8 @@
         {{-- Navbar Component --}}
         @include('components.navbarMember')
 
+        
+
         <p class="text-center text-3xl font-semibold">Home Page</p>
 
         @include('components.alert')
@@ -64,22 +66,7 @@
                                 </p>
                                 <hr>
 
-                                <div class="flex w-full justify-between items-center mt-2">
-                                    <div class="flex flex-row gap-2 items-center">
-                                        <div class="rating">
-                                            <input type="" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                                disabled />
-                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                                disabled />
-                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                                disabled />
-                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                                disabled />
-                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"
-                                                disabled />
-                                        </div>
-                                        <p class="text-xs font-semibold">2/5</p>
-                                    </div>
+                                <div class="flex w-full justify-end items-center mt-2">
 
 
                                     <div class="card-actions">

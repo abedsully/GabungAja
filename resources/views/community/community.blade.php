@@ -57,11 +57,28 @@
             <!-- Content -->
             <div class="flex-1">
                 
-                <div class="w-full px-[3rem] text-lg breadcrumbs mt-[3rem]">
+                <div class="w-full flex justify-between px-[3rem] text-lg breadcrumbs mt-[3rem]">
                     <ul>
                         <li><a href="/home">Home</a></li>
                         <li><a href="/community/{{ $community->id }}" class="font-semibold">{{ucwords($community->name)}}</a></li>
                     </ul>
+
+
+                    @if($isMember && !(Auth::user()->id == $community->user_id))
+                    <form action="/leave/{{ $community->id }}" method="POST">
+                        @csrf
+                        <button><i class="fa fa-sign-out text-red-500"></i></button>
+                    </form>
+                    @endif
+
+                    @if(Auth::user()->id == $community->user_id)
+                        <form action="/delete-community/{{ $community->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button><i class="fa fa-trash text-red-500"></i></button>
+                        </form>
+                    @endif
+                    
                 </div>
 
                 <div class="flex justify-center">
@@ -80,7 +97,7 @@
                     <div class="card w-full bg-customLightGreen shadow-md">
                         <div class="card-body">
                             <h2 class="text-2xl font-bold">Member</h2>
-                            <div class="divider font-semibold">{{ $members->count() }} Members</div>
+                            <div class="divider font-semibold">{{ $membersCount->count() }} Members</div>
                             <div class="grid grid-cols-3 gap-4 mt-4">
                                 @foreach ($members as $member)
                                     <div class="flex flex-col items-center">

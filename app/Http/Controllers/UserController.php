@@ -65,4 +65,5 @@ class UserController extends Controller {
 
         return redirect( '/profile/'. $id )->with( 'success', 'Profile has been updated successfully' );
     }
+
 }
