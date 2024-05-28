@@ -73,12 +73,20 @@
                         <div class="card-body">
                             <h2 class="text-2xl font-bold">{{ $community->motto }}</h2>
                             <div class="divider font-semibold">Community Description</div>
-                            <p class="text-justify">{{ $community->description }}</p>
-                            @if (Auth::user()->id == $community->user_id)
-                            <div class="font-medium hover:underline text-lg text-end">
-                            <a href="/edit-description/{{ $community->id }}"><i class="fa fa-pencil"></i> Edit Description</a>
-                            </div>
-                            @endif
+                            <!-- <div> -->
+                            <form action="/update-description/{{ $community->id }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('patch')
+                            <input name="description"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" value="{{ $community->description }}">
+                                <div class="text-end mt-3">
+                                    <button class="bg-customGreen border rounded h-10 hover:brightness-95 text-white">Edit Description</button>
+                                </div>
+                                
+                            </form>
+                            <!-- </div> -->
+                            
                         </div>
                     </div>
 

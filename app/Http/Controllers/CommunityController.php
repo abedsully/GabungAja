@@ -97,4 +97,31 @@ class CommunityController extends Controller {
     {
         
     }
+
+    public function editDescription($id)
+    {
+        $community = Community::findOrFail( $id );
+        $members = Member::where('community_id', $id)->with('user')->take(3)->get();
+        $posts = CommunityPost::where('community_id', $id)->get();
+
+        $isMember = Member::where('community_id', $id)->where('user_id', auth()->id())->exists();
+
+        return view( 'community.editDescription', compact( 'community' , 'members' , 'posts', 'isMember') );
+    }
+
+    public function updateDescription(Request $request , $id){
+
+        $community = Community::findOrFail( $id );
+
+        $request->validate( [
+            'description' => 'required',
+        ] );
+
+        $community->update( [
+            'description' => $request->description
+        ] );
+        // return view('community.community');
+        return redirect( '/community/'. $id )->with( 'success', 'Description has been updated successfully' );
+
+    }
 }
