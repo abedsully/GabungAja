@@ -25,6 +25,21 @@ class MemberController extends Controller
         return redirect('/community/' . $id)->with('success', 'You are now part of ' . $community->name);
     }
 
+    public function leave($id)
+    {
+        $user_id = auth()->id();
+        $community = Community::findOrFail($id);
+
+        $member = Member::where('community_id', $community->id)
+        ->where('user_id', $user_id)
+        ->first();
+
+        if ($member) {
+            $member->delete();
+            return redirect('/community/' . $id)->with('loginError', 'You have left the community ' . $community->name);
+        }
+    }
+
     public function showMembers($id) {
         $community = Community::findOrFail($id);
         $members = Member::where('community_id', $id)->with('user')->get();

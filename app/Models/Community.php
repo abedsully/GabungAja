@@ -21,6 +21,11 @@ class Community extends Model
     {
         return $this->belongsToMany(User::class, 'members', 'community_id', 'user_id');
     }
+
+    public function chats()
+    {
+        return $this->hasMany(CommunityChat::class);
+    }
     
 
     public static function boot()

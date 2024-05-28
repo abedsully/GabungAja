@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('community_id')->references('id')->on('communities');
+            $table->foreignId('community_id')->references('id')->on('communities')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

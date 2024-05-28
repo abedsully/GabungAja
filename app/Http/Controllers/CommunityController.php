@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 class CommunityController extends Controller {
+
     public function index($id) {
         $community = Community::findOrFail($id);
         $members = Member::where('community_id', $id)->with('user')->take(3)->get();
@@ -94,8 +95,12 @@ class CommunityController extends Controller {
         return view( 'main.home', compact( 'communities' ) );
     }
 
-    public function leave()
-    {
-        
+    public function delete($id) {
+        $community = Community::findOrFail($id);
+
+        Community::destroy($community->id);
+
+        return redirect('/home')->with('success', 'Community ' . $community->name . 'has been deleted');
     }
+
 }
