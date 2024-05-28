@@ -103,4 +103,28 @@ class CommunityController extends Controller {
         return redirect('/home')->with('success', 'Community ' . $community->name . 'has been deleted');
     }
 
+    public function editDescription($id)
+    {
+        $community = Community::findOrFail( $id );
+        $members = Member::where('community_id', $id)->with('user')->take(3)->get();
+        $posts = CommunityPost::where('community_id', $id)->get();
+
+        $isMember = Member::where('community_id', $id)->where('user_id', auth()->id())->exists();
+
+        return view( 'community.editDescription', compact( 'community' , 'members' , 'posts', 'isMember') );
+    }
+
+    public function updateDescription(Request $request , $id){
+
+        $community = Community::findOrFail( $id );
+
+        $request->validate( [
+            'description' => 'required',
+        ] );
+
+        $community->update( [
+            'description' => $request->description
+        ] );
+        return redirect( '/community/'. $id )->with( 'success', 'Description has been updated successfully' );
+    }
 }
