@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 
 class CommunityController extends Controller {
+
     public function index($id) {
         $community = Community::findOrFail($id);
         $members = Member::where('community_id', $id)->with('user')->take(3)->get();
+        $membersCount = Member::where('community_id', $id)->with('user')->get();
         $posts = CommunityPost::where('community_id', $id)->get();
 
         $isMember = Member::where('community_id', $id)->where('user_id', auth()->id())->exists();
     
-        return view('community.community', compact('community', 'members', 'isMember', 'posts'));
+        return view('community.community', compact('community', 'members', 'isMember', 'posts', 'membersCount'));
     }
     
 
@@ -93,9 +95,12 @@ class CommunityController extends Controller {
         return view( 'main.home', compact( 'communities' ) );
     }
 
-    public function leave()
-    {
-        
+    public function delete($id) {
+        $community = Community::findOrFail($id);
+
+        Community::destroy($community->id);
+
+        return redirect('/home')->with('success', 'Community ' . $community->name . 'has been deleted');
     }
 
     public function editDescription($id)
@@ -120,8 +125,6 @@ class CommunityController extends Controller {
         $community->update( [
             'description' => $request->description
         ] );
-        // return view('community.community');
         return redirect( '/community/'. $id )->with( 'success', 'Description has been updated successfully' );
-
     }
 }

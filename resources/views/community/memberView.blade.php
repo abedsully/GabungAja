@@ -82,7 +82,13 @@
                                 </div>
                               </div>
                               <div>
-                                <div class="font-bold">{{$member->user->fullName}}</div>
+                                <div class="font-bold">{{$member->user->fullName}}
+
+                                  <span class="text-gray-500"> 
+                                    @if (Auth::user()->id == $member->user_id)(You)
+                                  @endif
+                                </span>
+                                </div>
                                 <div class="text-sm opacity-50">{{$member->user->username}}</div>
                               </div>
                             </div>
@@ -91,7 +97,7 @@
                             {{$member->user->phoneNumber}}
                           </td>
                           <td>{{$member->created_at->format('d/m/Y')}}</td>
-                          @if (Auth::user()->id == $community->user_id)
+                          @if (Auth::user()->id != $member->user_id)
                             <th>
                                 <form action="/deleteMember/{{$member->id}}" method="POST" id="deleteForm{{ $member->id }}">
                                     @csrf

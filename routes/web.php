@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommunityPostController;
 use App\Http\Controllers\ForgetPassController;
+use App\Http\Controllers\CommunityChatController;
 use App\Http\Controllers\ResetPassController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,9 +53,18 @@ Route::get( '/create-community', [ CommunityController::class, 'create' ] ) -> m
 Route::post( '/store-community', [ CommunityController::class, 'store' ] ) -> middleware( 'auth' );
 Route::get( '/community/{id}', [ CommunityController::class, 'index' ] ) -> middleware( 'auth' );
 Route::post( '/join/{id}', [ MemberController::class, 'join' ] ) -> middleware( 'auth' );
+Route::post( '/leave/{id}', [ MemberController::class, 'leave' ] ) -> middleware( 'auth' );
 Route::get( '/create-post/{id}', [ CommunityPostController::class, 'create' ] ) -> middleware( 'auth' );
 Route::post( '/store-post/{id}', [ CommunityPostController::class, 'store' ] ) -> middleware( 'auth' );
 Route::get( '/showMember/{id}', [ MemberController::class, 'showMembers' ] ) -> middleware( 'auth' );
 Route::delete('/deleteMember/{id}', [MemberController::class, 'delete'])->middleware('auth');
 Route::get( '/edit-description/{id}', [ CommunityController::class, 'editDescription' ] )->middleware( 'auth' );
 Route::patch( '/update-description/{id}', [ CommunityController::class, 'updateDescription' ] )->middleware( 'auth' );
+Route::delete('/delete-community/{id}', [CommunityController::class, 'delete'])->middleware('auth');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get( '/chattingList/{id}', [ CommunityChatController::class, 'chatList' ] );
+    Route::get('/communities/{community}/chats', [CommunityChatController::class, 'show']);
+    Route::post('/communities/{community}/chats', [CommunityChatController::class, 'store']);
+});
