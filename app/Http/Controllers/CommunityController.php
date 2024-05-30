@@ -100,7 +100,7 @@ class CommunityController extends Controller {
 
         Community::destroy($community->id);
 
-        return redirect('/home')->with('success', 'Community ' . $community->name . 'has been deleted');
+        return redirect('/home')->with('success', 'Community ' . $community->name . ' has been deleted');
     }
 
     public function editDescription($id)

@@ -67,7 +67,7 @@
                     @if($isMember && !(Auth::user()->id == $community->user_id))
                     <form action="/leave/{{ $community->id }}" method="POST">
                         @csrf
-                        <button><i class="fa fa-sign-out text-red-500"></i></button>
+                        <button onclick="confirmLeave({{ $community->id}})"><i class="fa fa-sign-out text-red-500"></i></button>
                     </form>
                     @endif
 
@@ -75,7 +75,7 @@
                         <form action="/delete-community/{{ $community->id }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button><i class="fa fa-trash text-red-500"></i></button>
+                            <button onclick="confirmDelete({{ $community->id }})"><i class="fa fa-trash text-red-500"></i></button>
                         </form>
                     @endif
                     
@@ -170,6 +170,30 @@
         const textLength = textarea.value.length;
         characterCount.textContent = `${textLength}/500 characters`;
     });
+</script>
+
+{{-- Alert Delete --}}
+<script>
+    function confirmDelete(communityId) {
+        var confirmation = confirm("Do you really wish to delete this community?");
+        if (confirmation) {
+            document.getElementById('deleteForm' + communnityId).submit();
+        } else {
+            return false;
+        }
+    }
+</script>
+
+{{-- Alert Leave --}}
+<script>
+    function confirmLeave(communityId) {
+        var confirmation = confirm("Do you really wish to leave this community?");
+        if (confirmation) {
+            document.getElementById('deleteForm' + communnityId).submit();
+        } else {
+            return false;
+        }
+    }
 </script>
 
 </html>

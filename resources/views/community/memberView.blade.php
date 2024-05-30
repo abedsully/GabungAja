@@ -147,7 +147,7 @@
 {{-- Alert Delete --}}
 <script>
     function confirmDelete(memberId) {
-        var confirmation = confirm("Do you really wish to delete this article?");
+        var confirmation = confirm("Do you really wish to remove this member?");
         if (confirmation) {
             document.getElementById('deleteForm' + memberId).submit();
         } else {
