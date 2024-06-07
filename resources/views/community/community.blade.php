@@ -65,17 +65,17 @@
 
 
                     @if($isMember && !(Auth::user()->id == $community->user_id))
-                    <form action="/leave/{{ $community->id }}" method="POST">
+                    <form action="/leave/{{ $community->id }}" method="POST" id="formLeave{{ $community->id }}">
                         @csrf
-                        <button onclick="confirmLeave({{ $community->id}})"><i class="fa fa-sign-out text-red-500"></i></button>
+                        <button type="button" onclick="confirmLeave({{ $community->id}})"><i class="fa fa-sign-out text-red-500"></i></button>
                     </form>
                     @endif
 
                     @if(Auth::user()->id == $community->user_id)
-                        <form action="/delete-community/{{ $community->id }}" method="POST">
+                        <form action="/delete-community/{{ $community->id }}" method="POST" id="formDelete{{ $community->id }}">
                             @csrf
                             @method('delete')
-                            <button onclick="confirmDelete({{ $community->id }})"><i class="fa fa-trash text-red-500"></i></button>
+                            <button type="button" onclick="confirmDelete({{ $community->id }})"><i class="fa fa-trash text-red-500"></i></button>
                         </form>
                     @endif
                     
@@ -118,7 +118,11 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a class="text-center cursor-pointer text-customBrown mt-8 font-semibold hover:underline" href="/showMember/{{$community->id}}">View All</a>
+
+                            @if ($isMember)
+                                <a class="text-center cursor-pointer text-customBrown mt-8 font-semibold hover:underline" href="/showMember/{{$community->id}}">View All</a>
+                            @endif
+                            
                         </div>
                     </div>
                     
@@ -172,28 +176,25 @@
     });
 </script>
 
-{{-- Alert Delete --}}
 <script>
     function confirmDelete(communityId) {
         var confirmation = confirm("Do you really wish to delete this community?");
         if (confirmation) {
-            document.getElementById('deleteForm' + communnityId).submit();
+            document.getElementById('formDelete' + communityId).submit();
         } else {
-            return false;
+            return false;  // Prevent form submission
+        }
+    }
+
+    function confirmLeave(communityId) {
+        var confirmation = confirm("Do you really wish to leave this community?");
+        if (confirmation) {
+            document.getElementById('formLeave' + communityId).submit();
+        } else {
+            return false;  // Prevent form submission
         }
     }
 </script>
 
-{{-- Alert Leave --}}
-<script>
-    function confirmLeave(communityId) {
-        var confirmation = confirm("Do you really wish to leave this community?");
-        if (confirmation) {
-            document.getElementById('deleteForm' + communnityId).submit();
-        } else {
-            return false;
-        }
-    }
-</script>
 
 </html>

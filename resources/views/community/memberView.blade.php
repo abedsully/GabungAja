@@ -97,12 +97,12 @@
                             {{$member->user->phoneNumber}}
                           </td>
                           <td>{{$member->created_at->format('d/m/Y')}}</td>
-                          @if (Auth::user()->id != $member->user_id)
+                          @if (Auth::user()->id != $member->user_id && Auth::user()->id == $community->user_id)
                             <th>
                                 <form action="/deleteMember/{{$member->id}}" method="POST" id="deleteForm{{ $member->id }}">
                                     @csrf
                                     @method('delete')
-                                    <button class="text-lg text-red-500" onclick="confirmDelete({{ $member->id }})"><i class="fa fa-trash"></i></button>
+                                    <button type="button" class="text-lg text-red-500" onclick="confirmDelete({{ $member->id }})"><i class="fa fa-trash"></i></button>
                                 </form>
                                 
                             </th>
