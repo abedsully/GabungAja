@@ -93,7 +93,7 @@
                             <p class="text-justify">{{ $community->description }}</p>
                             @if (Auth::user()->id == $community->user_id)
                             <div class="font-medium hover:underline text-lg text-end">
-                                <a href="/edit-description/{{ $community->id }}"><i class="fa fa-pencil"></i> Edit Description</a>
+                            <a href="/edit-description/{{ $community->id }}"><i class="fa fa-pencil"></i> Edit Description</a>
                             </div>
                             @endif
                         </div>
@@ -134,9 +134,7 @@
                             <div class="grid grid-cols-2 gap-12">
                                 @if ($posts->count() > 0 && $posts->first()->community_id == $community->id)
                                     @foreach ($posts as $post)
-                                    
                                     <a class="max-w-[26rem] max-h-[37rem] rounded-lg overflow-hidden shadow-lg bg-white" href="/detailPost/{{ $post->id }}">
-                                        
                                         <img src="{{ asset('storage/images/' . $post->image) }}" class="w-[26rem] h-[20rem]"/>
                                         <div class="px-6 py-4">
                                           <div class="font-bold text-xl mb-2">{{ ucwords($post->title) }}</div>
@@ -146,9 +144,7 @@
 
                                           <p class="font-semibold mt-[3rem] text-end">Posted: {{$post->created_at->format('d/m/Y')}}</p>
                                         </div>
-
                                     </a>
-                                    
                                     @endforeach
                                 @endif
                             </div>

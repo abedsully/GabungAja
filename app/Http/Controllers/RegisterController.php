@@ -12,7 +12,7 @@ class RegisterController extends Controller {
 
     public function register( Request $request ) {
         $validasi = $request->validate( [
-            'fullName' => 'required|min:5|max:21',
+            'fullName' => 'required|min:5|max:40',
             'username' => 'required|unique:users|min:5|max:10',
             'email' => 'required|unique:users|email:dns',
             'phoneNumber' => 'required|numeric|digits:10',

@@ -50,7 +50,7 @@ class UserController extends Controller {
         $user = User::findOrFail( $id );
 
         $validasi = $request->validate( [
-            'fullName' => 'required|min:5|max:21',
+            'fullName' => 'required|min:5|max:40',
             'username' => [ 'required', Rule::unique( 'users' )->ignore( $user->id ) ],
             'phoneNumber' => 'required',
             'bio' => 'max:200'
