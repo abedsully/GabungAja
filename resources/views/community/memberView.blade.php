@@ -134,16 +134,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-<script>
-    const textarea = document.getElementById('communityDescription');
-    const characterCount = document.getElementById('characterCount');
-
-    textarea.addEventListener('input', function() {
-        const textLength = textarea.value.length;
-        characterCount.textContent = `${textLength}/500 characters`;
-    });
-</script>
-
 {{-- Alert Delete --}}
 <script>
     function confirmDelete(memberId) {

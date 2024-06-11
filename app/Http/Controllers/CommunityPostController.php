@@ -54,9 +54,13 @@ class CommunityPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CommunityPost $communityPost)
+    public function showDetail($id)
     {
-        //
+        $post = CommunityPost::findOrFail($id);
+        $postCommunityId = $post->community->id;
+
+        $community = Community::findOrFail($postCommunityId);
+        return view('community.detailPost', compact('post', 'community'));
     }
 
     /**

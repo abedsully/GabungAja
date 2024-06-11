@@ -81,7 +81,7 @@
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 type="text" value="{{ $community->description }}">
                                 <div class="text-end mt-3">
-                                    <button class="bg-customGreen border rounded h-10 hover:brightness-95 text-white">Edit Description</button>
+                                    <button class="bg-customGreen border rounded-lg p-2 h-10 hover:brightness-95 text-white">Edit Description</button>
                                 </div>
                                 
                             </form>
