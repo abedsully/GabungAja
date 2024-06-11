@@ -95,7 +95,7 @@
             <p class="text-center text-6xl">- OUR FEATURES -</p>
 
             <div class="flex gap-[10rem] justify-center mt-[4rem]">
-                <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card w-96 bg-base-100 shadow-xl cursor-pointer hover:text-customGreen">
                     <figure class="px-10 pt-10">
                         <i class="fa fa-users text-[10rem]"></i>
                     </figure>
@@ -108,7 +108,7 @@
                     </div>
                   </div>
 
-                  <div class="card w-96 bg-base-100 shadow-xl">
+                  <div class="card w-96 bg-base-100 shadow-xl cursor-pointer hover:text-customGreen">
                     <figure class="px-10 pt-10">
                         <i class="fa fa-comments text-[10rem]"></i>
                     </figure>
@@ -121,7 +121,7 @@
                     </div>
                   </div>
 
-                  <div class="card w-96 bg-base-100 shadow-xl">
+                  <div class="card w-96 bg-base-100 shadow-xl cursor-pointer hover:text-customGreen">
                     <figure class="px-10 pt-10">
                         <i class="fa fa-plus text-[10rem]"></i>
                     </figure>
