@@ -40,7 +40,7 @@
                             </label>
                             <input
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter your full name" name="fullName">
+                                type="text" placeholder="Enter your full name" name="fullName" value="{{old('fullName')}}">
                             @error('fullName')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}
@@ -54,7 +54,7 @@
                             </label>
                             <input
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter your username" name="username">
+                                type="text" placeholder="Enter your username" name="username" value="{{old('username')}}">
                             @error('username')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}
@@ -68,7 +68,7 @@
                             </label>
                             <input
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="email" placeholder="Enter your email" name="email">
+                                type="email" placeholder="Enter your email" name="email" value="{{old('email')}}">
                             @error('email')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}
@@ -82,7 +82,7 @@
                             </label>
                             <input
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter your phone number" name="phoneNumber">
+                                type="text" placeholder="Enter your phone number" name="phoneNumber" value="{{old('phoneNumber')}}">
                             @error('phoneNumber')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}

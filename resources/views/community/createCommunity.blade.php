@@ -41,7 +41,7 @@
                             </label>
                             <input name="name"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter community name">
+                                type="text" placeholder="Enter community name" value="{{old('name')}}">
                             @error('name')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}
@@ -55,7 +55,7 @@
                             </label>
                             <input name="motto"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter community motto">
+                                type="text" placeholder="Enter community motto" value="{{old('motto')}}">
                             @error('motto')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}
@@ -123,7 +123,7 @@
                             </label>
                             <input name="location"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter community location">
+                                type="text" placeholder="Enter community location" value="{{old('location')}}">
                             @error('location')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}

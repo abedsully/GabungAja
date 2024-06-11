@@ -41,7 +41,7 @@
                             </label>
                             <input name="title"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Enter community name">
+                                type="text" placeholder="Enter community name" value="{{old('title')}}">
                             @error('title')
                                 <div class="text-xs text-red-500 p-1 font-semibold">
                                     {{ $message }}
