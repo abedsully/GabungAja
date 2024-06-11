@@ -55,7 +55,7 @@
 
         
         
-        <div class="w-full h-[25rem] p-[4rem]">
+        <div class="w-full h-[25rem] px-[4rem] py-[2rem]">
             <div class="flex items-center">
                 <div class="flex flex-col gap-[2rem]">
                         <p class="text-black text-6xl w-[50rem]"><span class="text-customBrown">Gabung Aja</span>: Your Ultimate Community and Socializing Platform!
@@ -90,7 +90,7 @@
         
 
         <div id="ourfeatures" class="pt-[1rem]"></div>
-        <div  class="w-full h-[25rem] p-[4rem] mt-[10rem]" >
+        <div  class="w-full h-[25rem] px-[4rem] mt-[10rem]" >
             
             <p class="text-center text-6xl">- OUR FEATURES -</p>
 
@@ -137,7 +137,7 @@
         </div>
 
         <div id="testimonies"></div>
-        <div class="w-full h-[40rem] p-[4rem] mt-[10rem] flex justify-center">
+        <div class="w-full h-[40rem] px-[4rem] mt-[7rem] flex justify-center">
             
             <div class="flex flex-col">
                 <p class="text-center text-6xl" id="testimonies">- TESTIMONIES -</p>
