@@ -78,7 +78,12 @@
                             <div class="flex items-center gap-3">
                               <div class="avatar">
                                 <div class="mask mask-squircle w-12 h-12">
-                                  <img src="{{ asset('storage/profile/' . $member->user->profilePicture) }}" alt="" />
+                                  @if ($member->user->profilePicture)
+                                    <img src="{{ asset('storage/profile/' . $member->user->profilePicture) }}" alt="" />
+                                  @else
+                                    <i class="fa fa-user w-12 h-12 text-[2.5rem] text-customGreen bg-white text-center flex items-center justify-center"></i>
+                                  @endif
+                                  
                                 </div>
                               </div>
                               <div>

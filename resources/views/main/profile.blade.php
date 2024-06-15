@@ -35,16 +35,17 @@
 
         <div class="flex justify-between items-center px-10 gap-10">
             <div class="flex flex-col gap-2">
-
+                <div class="avatar">
                 @if ($user->profilePicture)
-                    <div class="avatar">
+
                         <div class="w-40 h-40 rounded-full bg-white">
                             <img src="{{ asset('storage/profile/' . $user->profilePicture) }}">
                         </div>
-                    </div>
+                    
                 @else
-                    <i class="fa fa-user-circle text-[10rem] text-black"></i>
+                    <i class="fa fa-user-circle text-[10rem] text-white rounded-full bg-customGreen"></i>
                 @endif
+            </div>
 
                 <form id="profilePictureForm" action="/store-picture/{{ auth()->user()->id }}" method="POST"
                     enctype="multipart/form-data">

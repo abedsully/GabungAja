@@ -115,8 +115,12 @@
                                     <div class="flex flex-col items-center">
                                         <div class="avatar">
                                             <div class="w-[8rem] h-[8rem] rounded-full bg-white">
-                                                <img
-                                                    src="{{ asset('storage/profile/' . $member->user->profilePicture) }}">
+                                                @if ($member->user->profilePicture)
+                                                    <img src="{{ asset('storage/profile/' . $member->user->profilePicture) }}">
+                                                @else
+                                                    <i class="fa fa-user-circle text-[8rem] text-white bg-customGreen"></i>
+                                                @endif
+
                                             </div>
                                         </div>
                                         <p class="text-center mt-2">{{ $member->user->username }}</p>
