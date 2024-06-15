@@ -63,6 +63,13 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="w-full flex justify-between px-[3rem] text-lg breadcrumbs mt-[3rem]">
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/" class="font-semibold">Community Chat</a></li>
+                    </ul>
+                </div>
         
 
                 <div class="flex justify-center">
@@ -76,7 +83,7 @@
                         <a class="w-full flex justify-between items-center" href="/communities/{{ $community->id }}/chats">
                             <div class="flex gap-[1rem] items-center">
                                 <img class="w-[4rem] h-[4rem] object-fill" src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
-                                <p class="text-xl">{{$community->name}}</p>
+                                <p class="text-xl">{{ucwords($community->name)}}</p>
                             </div>
                             
                             <p class="text-3xl"><i class="fa fa-commenting"></i></p>

@@ -64,12 +64,19 @@
                     </div>
                 </div>
         
+                <div class="w-full flex justify-between px-[3rem] text-lg breadcrumbs mt-[3rem]">
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/chattingList/{{ Auth::user()->id }}">Community Chat</a></li>
+                        <li><a href="/" class="font-semibold">{{ucwords($community->name)}}</a></li>
+                    </ul>
+                </div>
 
                 <div class="flex justify-center">
                     <div class="w-[60rem] min-h-[40rem] bg-white p-[2rem]">
                         <div class="flex items-center gap-[1rem] pb-[1rem]">
                             <img class="w-[4rem] h-[4rem] object-fill" src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
-                            <p class="text-xl">{{$community->name}}</p>
+                            <p class="text-xl">{{ucwords($community->name)}}</p>
                         </div>
 
                         <hr class="py-[1rem]">

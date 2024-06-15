@@ -102,7 +102,14 @@
                     <div class="card w-full bg-customLightGreen shadow-md">
                         <div class="card-body">
                             <h2 class="text-2xl font-bold">Member</h2>
-                            <div class="divider font-semibold">{{ $membersCount->count() }} Members</div>
+                            <div class="divider font-semibold">{{ $membersCount->count() }} 
+                                
+                                @if ($membersCount->count() > 1)
+                                    Members
+                                @else
+                                    Member
+                                @endif
+                            </div>
                             <div class="grid grid-cols-3 gap-4 mt-4">
                                 @foreach ($members as $member)
                                     <div class="flex flex-col items-center">

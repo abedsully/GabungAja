@@ -32,17 +32,45 @@
 
         <div class="flex justify-center px-16 items-center">
             <div class="flex flex-col gap-3">
-                <form action="/search" method="GET">
-                    <label class="input input-bordered flex items-center gap-2 w-[30rem]">
-                        <input type="text" class="grow" placeholder="Search Anything Here" name="search">
-                        <button class="kbd kbd-xl" type="submit"><i class="fa fa-search"></i></button>
-                    </label>
-                </form>
+                <div class="flex gap-[2rem] items-center">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="m-1"><i class="fa fa-filter text-3xl"></i></div>
+                        <ul tabindex="0" class="block dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40">
+                            <form action="/search" method="GET">
+                                <form action="/search" method="GET">
+                                    <li><button name="search" value="Adventure" type="submit">Adventure</button></li>
+                                    <li><button name="search" value="Art and Culture" type="submit">Art and Culture</button></li>
+                                    <li><button name="search" value="Celebrity" type="submit">Celebrity</button></li>
+                                    <li><button name="search" value="Culinary" type="submit">Culinary</button></li>
+                                    <li><button name="search" value="Entertainment" type="submit">Entertainment</button></li>
+                                    <li><button name="search" value="Environment" type="submit">Environment</button></li>
+                                    <li><button name="search" value="Fashion" type="submit">Fashion</button></li>
+                                    <li><button name="search" value="Finance" type="submit">Finance</button></li>
+                                    <li><button name="search" value="Lifestyle" type="submit">Lifestyle</button></li>
+                                    <li><button name="search" value="Music" type="submit">Music</button></li>
+                                    <li><button name="search" value="Political" type="submit">Political</button></li>
+                                    <li><button name="search" value="Profession" type="submit">Profession</button></li>
+                                    <li><button name="search" value="Religious" type="submit">Religious</button></li>
+                                    <li><button name="search" value="Science" type="submit">Science</button></li>
+                                    <li><button name="search" value="Social" type="submit">Social</button></li>
+                                    <li><button name="search" value="Sport" type="submit">Sport</button></li>
+                                    <li><button name="search" value="Technology" type="submit">Technology</button></li>
+                                </form>
+                                
+                            </form>
+                        </ul>
+                      </div>
 
+                    <form action="/search" method="GET">
+                        <label class="input input-bordered flex items-center gap-2 w-[30rem]">
+                            <input type="text" class="grow" placeholder="Search Anything Here" name="search">
+                            <button class="kbd kbd-xl" type="submit"><i class="fa fa-search"></i></button>
+                        </label>
+                    </form>
 
-
-                <p class="text-sm font-medium text-center ">Can't find your community? Make one <a
-                        href="/create-community" class="hover:underline text-customBrown font-semibold">here</a> </p>
+                    <button type="button" onclick="resetSearch()"><i class="fa fa-times text-xl"></i></button>
+                </div>
+                <p class="text-sm font-medium text-center ">Can't find your community? Make one <a href="/create-community" class="hover:underline text-customBrown font-semibold">here</a> </p>
             </div>
         </div>
 
@@ -59,7 +87,14 @@
                             <div class="card-body flex">
 
                                 <h2 class="card-title">{{ ucwords($community->name) }}</h2>
-                                <p class="text-sm m"><i class="fa fa-user mr-1"></i> {{ $community->members->count() }} Members
+
+                                <p class="text-sm m"><i class="fa fa-user mr-1"></i> {{ $community->members->count() }} 
+                                    @if ($community->members->count() > 1)
+                                        Members
+                                    @else
+                                        Member
+                                    @endif
+                                    
                                 </p>
                                 <p class="text-sm"><i class="fa fa-map mr-1"></i> {{ ucwords($community->location) }}</p>
                                 <p class="text-sm"><i class="fa fa-list-alt mr-1"></i> {{ ucwords($community->category) }}
@@ -100,4 +135,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
+<script>
+    function resetSearch() {
+        window.location.href = window.location.pathname;
+    }
+</script>
 </html>
