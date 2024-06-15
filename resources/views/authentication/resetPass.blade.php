@@ -27,7 +27,7 @@
             @include('components.alert')
         </div>
 
-
+        <!-- Content -->
         {{-- Register Form --}}
         <form action="/resetPass" method="POST">
             @csrf

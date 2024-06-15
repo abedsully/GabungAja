@@ -112,7 +112,7 @@
                             <p class="text-sm"><i class="fa fa-list-alt"></i> {{ $c->name }} </p>
                             <hr>
 
-                            <div class="flex w-full justify-between items-center mt-2">
+                            <div class="flex w-full justify-end items-center mt-2">
                                 <div class="card-actions">
                                     <a href="/community/{{ $c->id }}"
                                         class="flex items-center justify-center w-24 font-semibold bg-customGreen border rounded-lg h-12 hover:brightness-95 text-white text-center">Details</a>

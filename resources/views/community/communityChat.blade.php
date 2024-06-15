@@ -64,7 +64,8 @@
                     </div>
                 </div>
         
-
+                            
+                <!-- Content -->
                 <div class="flex justify-center">
                     <div class="w-[60rem] min-h-[40rem] bg-white p-[2rem]">
                         <div class="flex items-center gap-[1rem] pb-[1rem]">
