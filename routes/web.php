@@ -62,6 +62,7 @@ Route::delete('/deleteMember/{id}', [MemberController::class, 'delete'])->middle
 Route::get( '/edit-description/{id}', [ CommunityController::class, 'editDescription' ] )->middleware( 'auth' );
 Route::patch( '/update-description/{id}', [ CommunityController::class, 'updateDescription' ] )->middleware( 'auth' );
 Route::delete('/delete-community/{id}', [CommunityController::class, 'delete'])->middleware('auth');
+Route::patch('/update-logo/{id}', [CommunityController::class, 'changeCommunityLogo'])->middleware('auth');
 
 
 Route::middleware(['auth'])->group(function () {

@@ -75,7 +75,7 @@
                 <div class="flex justify-center">
                     <div class="w-[60rem] min-h-[40rem] bg-white p-[2rem]">
                         <div class="flex items-center gap-[1rem] pb-[1rem]">
-                            <img class="w-[4rem] h-[4rem] object-fill" src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
+                            <img class="w-[4rem] h-[4rem] object-fill" src="{{ asset('storage/logo/' . $community->logo) }}" />
                             <p class="text-xl">{{ucwords($community->name)}}</p>
                         </div>
 

@@ -82,7 +82,7 @@
                     <div class="flex py-[1.5rem] hover:bg-customGreen p-[1rem] hover:text-white">
                         <a class="w-full flex justify-between items-center" href="/communities/{{ $community->id }}/chats">
                             <div class="flex gap-[1rem] items-center">
-                                <img class="w-[4rem] h-[4rem] object-fill" src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
+                                <img class="w-[4rem] h-[4rem] object-fill" src="{{ asset('storage/logo/' . $community->logo) }}" alt="Shoes" />
                                 <p class="text-xl">{{ucwords($community->name)}}</p>
                             </div>
                             

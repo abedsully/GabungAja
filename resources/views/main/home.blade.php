@@ -82,7 +82,7 @@
                     @foreach ($communities as $community)
                         <div class="card card-compact w-[22rem] bg-base-100 shadow-xl">
                             <figure><img class="w-[22rem] h-[16rem] object-fill"
-                                    src="{{ asset('storage/images/' . $community->logo) }}" alt="Shoes" />
+                                    src="{{ asset('storage/logo/' . $community->logo) }}" alt="Shoes" />
                             </figure>
                             <div class="card-body flex">
 

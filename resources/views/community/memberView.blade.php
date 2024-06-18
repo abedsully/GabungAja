@@ -31,7 +31,7 @@
 
                     <div class="avatar w-full flex flex-col items-center gap-5 pt-6">
                         <div class="w-40 h-40 rounded-full">
-                            <img src="{{ asset('storage/images/' . $community->logo) }}" />
+                            <img src="{{ asset('storage/logo/' . $community->logo) }}" />
                         </div>
 
                         <h1 class="text-lg font-bold">{{ucwords($community->name)}}</h1>

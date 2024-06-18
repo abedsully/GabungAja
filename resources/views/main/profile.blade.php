@@ -36,16 +36,18 @@
         <div class="flex justify-between items-center px-10 gap-10">
             <div class="flex flex-col gap-2">
                 <div class="avatar">
-                @if ($user->profilePicture)
-
-                        <div class="w-40 h-40 rounded-full bg-white">
-                            <img src="{{ asset('storage/profile/' . $user->profilePicture) }}">
-                        </div>
-                    
-                @else
-                    <i class="fa fa-user-circle text-[10rem] text-white rounded-full bg-customGreen"></i>
-                @endif
-            </div>
+                    <label for="file-upload">
+                        @if ($user->profilePicture)
+                            <div class="w-40 h-40 rounded-full bg-white">
+                                <img src="{{ asset('storage/profile/' . $user->profilePicture) }}"
+                                    class="rounded-full cursor-pointer hover:opacity-95">
+                            </div>
+                        @else
+                            <i
+                                class="fa fa-user-circle text-[10rem] text-white rounded-full bg-customGreen cursor-pointer"></i>
+                        @endif
+                    </label>
+                </div>
 
                 <form id="profilePictureForm" action="/store-picture/{{ auth()->user()->id }}" method="POST"
                     enctype="multipart/form-data">
@@ -53,10 +55,6 @@
                     @method('patch')
 
                     <div class="flex flex-col items-center gap-2 flex-column">
-                        <label for="file-upload" class="cursor-pointer text-customBrown hover:underline">
-                            Change Profile Photo
-                        </label>
-
                         <input id="file-upload" type="file" name="profilePicture" class="hidden"
                             onchange="uploadProfilePicture(this)">
                     </div>
@@ -81,7 +79,8 @@
                         <div class="flex justify-between mt-5">
                             @if (Auth::user()->id == $user->id)
                                 <div class="font-semibold hover:underline text-lg">
-                                    <a href="/edit-profile/{{ $user->id }}"><i class="fa fa-pencil"></i> Edit Profile</a>
+                                    <a href="/edit-profile/{{ $user->id }}"><i class="fa fa-pencil"></i> Edit
+                                        Profile</a>
                                 </div>
                             @endif
 
@@ -103,14 +102,14 @@
                 @foreach ($communities as $c)
                     <div class="card card-compact w-[22rem] bg-base-100 shadow-xl">
                         <figure><img class="w-[22rem] h-[16rem] object-fill"
-                                src="{{ asset('storage/images/' . $c->logo) }}" alt="Shoes" />
+                                src="{{ asset('storage/logo/' . $c->logo) }}" alt="Shoes" />
                         </figure>
                         <div class="card-body flex">
 
                             <h2 class="card-title">{{ ucwords($c->name) }}</h2>
                             <p class="text-sm"><i class="fa fa-user"></i> {{ $c->members->count() }} Members</p>
                             <p class="text-sm"><i class="fa fa-map"></i> {{ ucwords($c->location) }}</p>
-                            <p class="text-sm"><i class="fa fa-list-alt"></i> {{ $c->name }} </p>
+                            <p class="text-sm"><i class="fa fa-list-alt"></i> {{ $c->category }} </p>
                             <hr>
 
                             <div class="flex w-full justify-between items-center mt-2">

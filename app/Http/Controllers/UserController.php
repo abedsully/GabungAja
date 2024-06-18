@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller {
     public function showProfile( $id ) {
@@ -19,26 +20,35 @@ class UserController extends Controller {
         }
     }
 
-    public function storeProfilePicture( Request $request, $id ) {
-        $validasi = $request->validate( [
-            'profilePicture' => 'required',
-        ] );
+    public function storeProfilePicture(Request $request, $id) {
+        $validasi = $request->validate([
+            'profilePicture' => 'required|image',
+        ]);
+    
+        $user = User::findOrFail($id);
+    
+
+        $currentProfilePicture = $user->profilePicture;
 
         $filename = null;
-
-        if ( $request->file( 'profilePicture' ) != null ) {
-            $extension = $request->file( 'profilePicture' )->getClientOriginalExtension();
-            $originalName = pathinfo( $request->file( 'profilePicture' )->getClientOriginalName(), PATHINFO_FILENAME );
+        if ($request->file('profilePicture') != null) {
+            $extension = $request->file('profilePicture')->getClientOriginalExtension();
+            $originalName = pathinfo($request->file('profilePicture')->getClientOriginalName(), PATHINFO_FILENAME);
             $filename = $originalName . '_' . time() . '.' . $extension;
-            $request->file( 'profilePicture' )->storeAs( '/public/profile', $filename );
+            $request->file('profilePicture')->storeAs('public/profile', $filename);
         }
 
-        User::findOrFail( $id )->update( [
+        $user->update([
             'profilePicture' => $filename,
-        ] );
-
-        return redirect( '/profile/' . $id )->with( 'success', 'Profile Picture has been updated successfully!' );
+        ]);
+    
+        if ($currentProfilePicture) {
+            Storage::delete('public/profile/' . $currentProfilePicture);
+        }
+    
+        return redirect('/profile/' . $id)->with('success', 'Profile Picture has been updated successfully!');
     }
+    
 
     public function editProfile( $id ) {
         $user = User::findOrFail( $id );

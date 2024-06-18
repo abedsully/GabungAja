@@ -7,6 +7,7 @@ use App\Models\CommunityPost;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class CommunityController extends Controller {
@@ -29,7 +30,7 @@ class CommunityController extends Controller {
 
     public function store( Request $request ) {
         $validasi = $request->validate( [
-            'name' => 'required',
+            'name' => 'required|unique:communities',
             'motto' => 'required',
             'category' => 'required',
             'description' => 'required',
@@ -45,7 +46,7 @@ class CommunityController extends Controller {
             $extension = $request->file( 'logo' )->getClientOriginalExtension();
             $originalName = pathinfo( $request->file( 'logo' )->getClientOriginalName(), PATHINFO_FILENAME );
             $filename = $originalName . '_' . time() . '.' . $extension;
-            $request->file( 'logo' )->storeAs( 'public/images', $filename );
+            $request->file( 'logo' )->storeAs( 'public/logo', $filename );
         }
 
         $community = Community::create( [
@@ -128,4 +129,34 @@ class CommunityController extends Controller {
         ] );
         return redirect( '/community/'. $id )->with( 'success', 'Description has been updated successfully' );
     }
+    public function changeCommunityLogo(Request $request, $id) {
+        if (auth()->id() == $id) {
+            $validasi = $request->validate([
+                'logo' => 'required|image', // Adding 'image' validation to ensure the uploaded file is an image
+            ]);
+    
+            $community = Community::findOrFail($id);
+    
+            $currentLogo = $community->logo;
+    
+            $filename = null;
+            if ($request->file('logo') != null) {
+                $extension = $request->file('logo')->getClientOriginalExtension();
+                $originalName = pathinfo($request->file('logo')->getClientOriginalName(), PATHINFO_FILENAME);
+                $filename = $originalName . '_' . time() . '.' . $extension;
+                $request->file('logo')->storeAs('public/logo', $filename);
+            }
+    
+            $community->update([
+                'logo' => $filename,
+            ]);
+    
+            if ($currentLogo) {
+                Storage::delete('public/logo/' . $currentLogo);
+            }
+    
+            return redirect('/community/' . $id)->with('success', 'Community Logo has been updated successfully!');
+        }
+    }
+    
 }
